@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: dbf12b1e10bd3c84d92d72b080818c856c64fe41660c8c2490112c421889b798
+-- hash: 4a9199d6de02175eccb53874ad92d41a6cd607a68ac6d2cb3a37235d1032bb5a
 
 name:           hs-empty-project-plain
 version:        0.1.0.0
@@ -28,6 +28,7 @@ source-repository head
 library
   exposed-modules:
       Lib
+      Student
   other-modules:
       Paths_hs_empty_project_plain
   hs-source-dirs:
