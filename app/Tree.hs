@@ -1,7 +1,25 @@
 module Tree where
 
+class Formatable a where
+	format::a->String
+
+
 data Tree a = Tree {left :: Tree a, right :: Tree a, value::a}
-            | Leaf deriving Show
+            | Leaf
+
+instance (Show a) => Formatable (Tree a) where
+        format (Leaf) = ""
+        format (Tree left right value) = "(" ++ (format  left) ++" "++ show value ++" "++ (format right) ++ ")"
+
+instance (Eq a) => Eq (Tree a) where
+        (==) Leaf Leaf = True
+        (==) (Tree _ _ _) Leaf = False
+        (==) Leaf (Tree _ _ _) = False
+        (==) (Tree l1 r1 v1) (Tree l2 r2 v2) = (l1 == l2) && (r1 == r2) && (v1 == v2)
+
+instance Functor Tree where
+        fmap f Leaf = Leaf
+	fmap f (Tree l r v) = Tree (fmap f l) (fmap f r) (f v)
 
 
 insert :: (Ord a) => Tree a -> a -> Tree a
